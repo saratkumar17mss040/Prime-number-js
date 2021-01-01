@@ -45,14 +45,15 @@ function checkPrime() {
 			if (dobString.length === 3) {
 				date = parseInt(dobString[0]);
 				month = parseInt(dobString.slice(1));
-				console.log(date, month);
 			} else if (dobString.length === 4) {
 				date = parseInt(dobString.slice(0, 2));
 				month = parseInt(dobString.slice(2, 4));
-				console.log(date, month);
 			}
 
-			if (monthDays[month] >= date) {
+			if (date === 1) {
+				output.innerText = `${name.value} your birthday ${date} is neither prime nor composite number !`;
+				output.style.color = 'rgb(255, 101, 132)';
+			} else if (monthDays[month] >= date) {
 				for (let i = 2; i < date; i++) {
 					if (date % i === 0 && name.value) {
 						isPrime = false;
