@@ -22,6 +22,7 @@ function checkPrime() {
 		} else {
 			output.classList.remove('output-load');
 			const dobString = dobNumber.toString();
+			let isPrime = true;
 			let date = undefined;
 			let month = undefined;
 			// 1 will be jan then 2 will be feb and so on
@@ -52,12 +53,17 @@ function checkPrime() {
 				var sqrtNumber = Math.sqrt(date);
 				for (let i = 2; i < sqrtNumber; i++) {
 					if (date % i === 0 && name.value) {
-						output.innerText = `${name.value} your birthday ${date} is not a prime number !`;
-						output.style.color = 'rgb(255, 101, 132)';
+						isPrime = false;
+						break;
 					}
 				}
-				output.innerText = `${name.value} your birthday ${date} is a prime number !`;
-				output.style.color = 'rgb(108, 99, 255)';
+				if (isPrime) {
+					output.innerText = `${name.value} your birthday ${date} is a prime number !`;
+					output.style.color = 'rgb(108, 99, 255)';
+				} else {
+					output.innerText = `${name.value} your birthday ${date} is not a prime number !`;
+					output.style.color = 'rgb(255, 101, 132)';
+				}
 			} else {
 				output.innerText =
 					'Please enter a valid day or month or make sure the format is correct !';
